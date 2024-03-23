@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title%}
+    <title>Show Information</title>
+{% endblock %}
+
+{% block content %}
+        <h3 class="text-primary text-center mb-3 mt-2 p-2">School Teacher List Information</h3>
+            <table class="table table-bordered border-primary table-haver w-60 m-auto">
+                <thead>
+                    <tr>
+                        <th> Teacher ID </th>
+                        <th> Teacher School Name </th>
+                        <th> Teacher Name </th>
+                        <th> School Location </th>
+                        <th> Teaching Experience </th>
+                        <th> Teacher Age </th>
+                        <th> Teacher Address </th>
+                        <th colspan="2" class="text-center"> Action </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for schoolteacher in school %}
+                    <tr>
+                        <td> {{ schoolteacher.id }}</td>
+                        <td> {{ schoolteacher.teacher_school_name }}</td>
+                        <td> {{ schoolteacher.teacher_name }}</td>
+                        <td> {{ schoolteacher.school_location }}</td>
+                        <td> {{ schoolteacher.teaching_experience }}</td>
+                        <td> {{ schoolteacher.teacher_age }}</td>
+                        <td> {{ schoolteacher.teacher_address }}</td>
+
+                        <td>
+                            <a href="{% url 'update_url' schoolteacher.id %}">
+                                <button class="btn btn-secondary col-12"><i class="bi bi-vector-pen"></i> &nbsp Update </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'delete_url' schoolteacher.id %}">
+                                <button class="btn btn-danger col-12"><i class="bi bi-trash"></i> &nbsp Delete </button>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+{% endblock %}
